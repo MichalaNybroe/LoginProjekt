@@ -12,18 +12,17 @@
 
         <ul>
             <li>
-                <a href="profilePage">My Profile</a>
-            </li>
-            <li>
                 <a href="friday">Is it Friday?</a>
             </li>
             <li>
-                <a href="/">Log Out</a>
+                <form action="/logOut" method="post">
+                    <input type="submit" value="Log Out">
+                </form>
             </li>
         </ul>
     </header>
     <div id="content">
-        <h2>hejsa</h2>
+        <h2 th:text="${session.username}">John Doe</h2>
     </div>
     <footer>
 

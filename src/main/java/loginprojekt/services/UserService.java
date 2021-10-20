@@ -30,23 +30,24 @@ public class UserService {
         return this.user;
     }
 
-    public boolean checkUser(String query) {
-        //"SELECT user.user_name FROM users WHERE user_name = " + name + " && user_password = " + password + "";
+    public boolean checkUser(String query, String username, String password) {
         Connection c = DBManager.getConnection();
         PreparedStatement preparedStatement;
 
         try {
             preparedStatement = c.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            //HVAD SKAL VI BRUGE RESULTSET TIL????
-
-            return true;
-
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
         } catch (SQLException e) {
             System.out.println(e.getErrorCode());
         }
-
         return false;
     }
 }

@@ -1,28 +1,43 @@
 package loginprojekt.controllers;
 
 import loginprojekt.services.UserService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-    UserService userService;
+    UserService userService = new UserService();
 
     @GetMapping("/")
-    public String home() {
-        return "index";
+    public ModelAndView home(HttpSession session) {
+        if (session.getAttribute("username") != null) {
+            return new ModelAndView(new RedirectView("/profilePage"));
+        } else {
+            return new ModelAndView("index");
+        }
     }
 
     @GetMapping("/profilePage")
-    public String profile() {
-        return "profilePage";
+    public ModelAndView profile(HttpSession session) {
+        if (session.getAttribute("username") != null) {
+            return new ModelAndView("profilePage");
+        } else {
+            return new ModelAndView(new RedirectView("/"));
+        }
     }
 
     @GetMapping("/friday")
-    public String day() {
-        return "friday";
+    public ModelAndView day(HttpSession session) {
+        if (session.getAttribute("username") != null) {
+            return new ModelAndView("friday");
+        } else {
+            return new ModelAndView(new RedirectView("/"));
+        }
     }
 
     @GetMapping("/createUser")
@@ -30,18 +45,30 @@ public class Controller {
         return "createUser";
     }
 
-    @PostMapping("/")
-    public String createdUser(@RequestParam String name, @RequestParam String password, Model model) {
+    @PostMapping("/createUser")
+    public RedirectView createdUser(@RequestParam String name, @RequestParam String password) {
         userService.createUser(name, password);
-        model.addAttribute("user", userService.getUser());
-        return "index";
+        return new RedirectView("/");
     }
 
-    @PostMapping("/profilePage")
-    public String logIn(@RequestParam String name, @RequestParam String password, Model model) {
-        userService.checkUser(
-                "SELECT user.user_name FROM users WHERE user_name = " + name + " && user_password = " + password
+    @PostMapping("/logIn")
+    public RedirectView logIn(HttpSession session, @RequestParam String name, @RequestParam String password) {
+        boolean exists = userService.checkUser(
+                "SELECT users.user_name FROM users WHERE user_name = ? && user_password = ?",
+                name,
+                password
         );
-        model.addAttribute("user", )
+        if (exists) {
+            // Create session
+            session.setAttribute("username", name);
+            return new RedirectView("profilePage");
+        }
+        return new RedirectView("fail");
+    }
+
+    @PostMapping("/logOut")
+    public RedirectView logOut(HttpSession session) {
+        session.invalidate();
+        return new RedirectView("/");
     }
 }

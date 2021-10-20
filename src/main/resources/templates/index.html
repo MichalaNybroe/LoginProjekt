@@ -12,14 +12,12 @@
     </header>
     <div id="content">
 
-        <form>
+        <form action="/logIn" method="post">
             <p>Write username</p>
-            <input type="text">
+            <input type="text" name="name">
             <p>Write password</p>
-            <input type="text">
-            <a href="profilePage">
-            <input type="button" value="Log in">
-            </a>
+            <input type="password" name="password">
+            <input type="submit" value="Log in">
             <a href="createUser">Create User</a>
         </form>
     </div>

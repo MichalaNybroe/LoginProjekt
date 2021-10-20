@@ -7,14 +7,12 @@
 <body>
 <div id="wrapper">
     <div id="content">
-    <form>
+    <form action="/createUser" method="post">
         <p>Enter username</p>
-        <input type="text">
+        <input name="name" type="text">
         <p>Enter password</p>
-        <input type="text">
-        <a href="/">
-        <input type="button" value="Create User">
-        </a>
+        <input name="password" type="password">
+        <input type="submit" value="Create User">
         <a href="/">Cancel</a>
     </form>
 
