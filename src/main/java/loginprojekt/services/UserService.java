@@ -1,6 +1,6 @@
-package loginprojekt.service;
+package loginprojekt.services;
 
-import loginprojekt.model.User;
+import loginprojekt.models.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

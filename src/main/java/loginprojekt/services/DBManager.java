@@ -1,4 +1,4 @@
-package loginprojekt.service;
+package loginprojekt.services;
 
 import java.io.FileInputStream;
 import java.io.IOException;
