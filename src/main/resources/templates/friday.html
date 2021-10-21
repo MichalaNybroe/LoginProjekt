@@ -15,6 +15,9 @@
             <a href="profilePage">My Profile</a>
         </li>
         <li>
+            <a href="calculator">Calculator</a>
+        </li>
+        <li>
             <form action="/logOut" method="post">
                 <input type="submit" value="Log Out">
             </form>
@@ -22,7 +25,8 @@
     </ul>
 </header>
     <div id="content">
-<h2>hejsa</h2>
+<h2>Is it friday?</h2>
+        <p th:text="${day}">Day</p>
     </div>
     <footer>
 

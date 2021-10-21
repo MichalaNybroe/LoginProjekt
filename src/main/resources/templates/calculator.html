@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <img th:src="@{/images/logo1.png}"/>
+        <h1>Little Birdie</h1>
+
+        <ul>
+            <li>
+                <a href="profilePage">My Profile</a>
+            </li>
+            <li>
+                <a href="friday">Is it Friday?</a>
+            </li>
+            <li>
+                <form action="/logOut" method="post">
+                    <input type="submit" value="Log Out">
+                </form>
+            </li>
+        </ul>
+    </header>
+    <div id="content">
+        <h2>Im Your Personal Calculator!</h2>
+        <form action="/calculating" method="post">
+            Enter number one here:
+            <input type="text" name="first">
+            Enter number two here:
+            <input type="text" name="second">
+            Enter operator type (+, -, /, *):
+            <input type="text" name="operator">
+            <input type="submit" value="Push when done!">
+        </form>
+
+        <h3 th:text="${result}">Result</h3>
+    </div>
+    <footer>
+
+    </footer>
+</div>
+</body>
+</html>
