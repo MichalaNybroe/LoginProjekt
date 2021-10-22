@@ -26,6 +26,7 @@ public class UserService {
         }
     }
 
+    //SKAL VI IKKE BARE SLETTE DEN?? - bruges ikke længere
     public User getUser() {
         return this.user;
     }
