@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create User</title>
+    <link rel="stylesheet" th:href="@{css/createUser.css}">
 </head>
 <body>
 <div id="wrapper">
@@ -12,8 +13,8 @@
         <input name="name" type="text">
         <p>Enter password</p>
         <input name="password" type="password">
-        <input type="submit" value="Create User">
-        <a href="/">Cancel</a>
+        <input type="submit" value="Create User" id="new">
+        <a href="/" id="cancel">Cancel</a>
     </form>
 
     </div>
