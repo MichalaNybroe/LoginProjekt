@@ -1,10 +1,26 @@
+header{
+    margin-bottom: -4%;
+}
+
+#img{
+    margin: 5% 0% 5% 21%;
+    width: 17%;
+}
+
+header h1{
+    width: 62%;
+    float: right;
+    margin-top: 10%;
+    font-size: 75px;
+}
+
 body{
     background-color: aliceblue;
 }
 
 #content{
     width: 50%;
-    margin: 20% 42%;
+    margin: 0% 42%;
 }
 
 #content p{
@@ -13,7 +29,7 @@ body{
 
 #new{
     width: 14%;
-    margin: 3% 75% 3% 5%;
+    margin: 3% 75% 3% 3%;
 }
 
 #cancel{

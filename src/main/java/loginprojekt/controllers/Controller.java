@@ -22,15 +22,6 @@ public class Controller {
         }
     }
 
-    @GetMapping("/profilePage")
-    public ModelAndView profile(HttpSession session) {
-        if (session.getAttribute("username") != null) {
-            return new ModelAndView("profilePage");
-        } else {
-            return new ModelAndView(new RedirectView("/"));
-        }
-    }
-
     @GetMapping("/createUser")
     public String create() {
         return "createUser";
