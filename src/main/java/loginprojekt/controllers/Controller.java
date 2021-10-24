@@ -31,15 +31,6 @@ public class Controller {
         }
     }
 
-    @GetMapping("/friday")
-    public ModelAndView day(HttpSession session) {
-        if (session.getAttribute("username") != null) {
-            return new ModelAndView("friday");
-        } else {
-            return new ModelAndView(new RedirectView("/"));
-        }
-    }
-
     @GetMapping("/createUser")
     public String create() {
         return "createUser";
