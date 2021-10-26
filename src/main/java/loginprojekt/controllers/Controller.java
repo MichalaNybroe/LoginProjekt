@@ -1,6 +1,6 @@
 package loginprojekt.controllers;
 
-import loginprojekt.services.UserService;
+import loginprojekt.repositories.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
 public class Controller {
+
+    //VI SKAL HAVE ALT VORES LOGIK UD HERFRA OG HAVE LAVET EN NY SERVICE KLASSE TIL DET!!!
+
     UserService userService = new UserService();
 
     @GetMapping("/")
@@ -35,7 +38,7 @@ public class Controller {
 
     @PostMapping("/logIn")
     public RedirectView logIn(HttpSession session, @RequestParam String name, @RequestParam String password) {
-        boolean exists = userService.checkUser(
+        boolean exists = userService.isValidUser(
                 "SELECT users.user_name FROM users WHERE user_name = ? && user_password = ?",
                 name,
                 password
@@ -45,7 +48,7 @@ public class Controller {
             session.setAttribute("username", name);
             return new RedirectView("profilePage");
         }
-        return new RedirectView("fail");
+        return new RedirectView("fail"); //Her skal smides en exception?
     }
 
     @PostMapping("/logOut")

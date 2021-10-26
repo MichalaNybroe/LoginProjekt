@@ -1,4 +1,4 @@
-package loginprojekt.services;
+package loginprojekt.repositories;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class DBManager {
       properties.load(input);
       url = properties.getProperty("url");
       user = properties.getProperty("user");
-      password = properties.getProperty("password");
+      password = properties.getProperty("passworgit ad");
     } catch (IOException ex) {
       ex.printStackTrace();
     }

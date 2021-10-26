@@ -1,12 +1,16 @@
-package loginprojekt.services;
+package loginprojekt.repositories;
 
-import loginprojekt.models.User;
+import loginprojekt.domain.models.User;
+import loginprojekt.repositories.DBManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserService {
+
+    //SKAL DEN OMNAVNGIVES TIL USERREPOSITORY???
 
     private User user;
 
@@ -31,7 +35,8 @@ public class UserService {
         return this.user;
     }
 
-    public boolean checkUser(String query, String username, String password) {
+    public boolean isValidUser(String query, String username, String password) {
+        //String query =
         Connection c = DBManager.getConnection();
         PreparedStatement preparedStatement;
 

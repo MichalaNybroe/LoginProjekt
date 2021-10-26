@@ -1,4 +1,4 @@
-package loginprojekt.models;
+package loginprojekt.domain.models;
 
 public class User {
   String userName;
